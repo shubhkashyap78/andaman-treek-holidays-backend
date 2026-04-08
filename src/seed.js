@@ -7,6 +7,7 @@ import Honeymoon from "./models/Honeymoon.js";
 import Family from "./models/Family.js";
 import Ltc from "./models/Ltc.js";
 import Group from "./models/Group.js";
+import Ferry from "./models/Ferry.js";
 
 dotenv.config();
 
@@ -332,6 +333,63 @@ const groups = [
   }
 ];
 
+const ferries = [
+  {
+    name: "Green Ocean-1",
+    type: "Open Deck",
+    description: "Premium high-speed ferry with open deck experience and luxury amenities",
+    duration: "2 Hours",
+    features: ["AC", "Meals"],
+    priceFrom: 1500,
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+  },
+  {
+    name: "Green Ocean-2",
+    type: "Luxury",
+    description: "Modern high-speed ferry with comfortable seating and premium facilities",
+    duration: "2 Hours",
+    features: ["AC", "WiFi"],
+    priceFrom: 1800,
+    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+  },
+  {
+    name: "Makruzz Gold",
+    type: "Standard",
+    description: "Fast and reliable ferry service with excellent safety standards",
+    duration: "2 Hours",
+    features: ["Seating", "Safe"],
+    priceFrom: 1200,
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+  },
+  {
+    name: "MV Makruzz",
+    type: "Eco-Friendly",
+    description: "Eco-friendly ferry with sustainable operations and comfortable journey",
+    duration: "2 Hours",
+    features: ["Eco", "Groups"],
+    priceFrom: 1300,
+    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+  },
+  {
+    name: "Nautika",
+    type: "Budget",
+    description: "Budget-friendly private ferry service with reliable and comfortable journey",
+    duration: "2 Hours",
+    features: ["Budget", "Private"],
+    priceFrom: 1000,
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+  },
+  {
+    name: "ITT Majestic",
+    type: "Popular",
+    description: "Most popular ferry service with excellent customer reviews and comfort",
+    duration: "2 Hours",
+    features: ["Rated", "Popular"],
+    priceFrom: 1400,
+    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+  }
+];
+
 async function seed() {
   if (!MONGODB_URI) {
     throw new Error("MONGODB_URI not set");
@@ -355,6 +413,8 @@ async function seed() {
   await Ltc.insertMany(ltcs);
   await Group.deleteMany({});
   await Group.insertMany(groups);
+  await Ferry.deleteMany({});
+  await Ferry.insertMany(ferries);
 
   console.log("Seed complete");
   await mongoose.disconnect();
