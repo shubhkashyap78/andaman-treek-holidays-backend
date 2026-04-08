@@ -14,6 +14,7 @@ import authMiddleware from "./middleware/authMiddleware.js";
 import honeymoonRouter from "./routes/honeymoon.js";
 import familyRouter from "./routes/family.js";
 import ltcRouter from "./routes/ltc.js";
+import groupRouter from "./routes/group.js";
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use("/api/islands", islandsRouter);
 app.use("/api/honeymoon", honeymoonRouter);
 app.use("/api/family", familyRouter);
 app.use("/api/ltc", ltcRouter);
+app.use("/api/group", groupRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

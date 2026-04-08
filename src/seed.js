@@ -6,6 +6,7 @@ import Island from "./models/Island.js";
 import Honeymoon from "./models/Honeymoon.js";
 import Family from "./models/Family.js";
 import Ltc from "./models/Ltc.js";
+import Group from "./models/Group.js";
 
 dotenv.config();
 
@@ -278,6 +279,59 @@ const ltcs = [
 ];
 
 
+const groups = [
+  {
+    title: "Group Escape 5N/6D",
+    subtitle: "Perfect for friend groups",
+    duration: "5 Nights / 6 Days",
+    priceFrom: 18999,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    description: "Port Blair, Havelock, and Neil with group-friendly activities and stays.",
+    highlights: ["Cellular Jail", "Radhanagar Beach", "Glass Boat Ride"],
+    tags: ["group", "friends"]
+  },
+  {
+    title: "Corporate Group 4N/5D",
+    subtitle: "Team outing special",
+    duration: "4 Nights / 5 Days",
+    priceFrom: 16999,
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    description: "Ideal for corporate teams — relaxed itinerary with team bonding activities.",
+    highlights: ["Team Activities", "Beach BBQ", "Island Tour"],
+    tags: ["group", "corporate"]
+  },
+  {
+    title: "Budget Group 3N/4D",
+    subtitle: "Affordable group fun",
+    duration: "3 Nights / 4 Days",
+    priceFrom: 12999,
+    image: "https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+    description: "Best value group trip covering key Andaman attractions.",
+    highlights: ["Corbyn's Cove", "Ross Island", "Sea Walk"],
+    tags: ["group", "budget"]
+  },
+  {
+    title: "Adventure Group 5N/6D",
+    subtitle: "Thrills for the whole group",
+    duration: "5 Nights / 6 Days",
+    priceFrom: 22999,
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    description: "Scuba, kayaking, trekking — the ultimate group adventure.",
+    highlights: ["Scuba Diving", "Kayaking", "Trekking"],
+    tags: ["group", "adventure"]
+  },
+  {
+    title: "Premium Group 6N/7D",
+    subtitle: "Luxury group experience",
+    duration: "6 Nights / 7 Days",
+    priceFrom: 28999,
+    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    description: "Premium hotels, private transfers, and exclusive island experiences for groups.",
+    highlights: ["Private Beach", "Luxury Resort", "Sunset Cruise"],
+    tags: ["group", "luxury"]
+  }
+];
+
 async function seed() {
   if (!MONGODB_URI) {
     throw new Error("MONGODB_URI not set");
@@ -299,6 +353,8 @@ async function seed() {
   await Family.insertMany(families);
   await Ltc.deleteMany({});
   await Ltc.insertMany(ltcs);
+  await Group.deleteMany({});
+  await Group.insertMany(groups);
 
   console.log("Seed complete");
   await mongoose.disconnect();
