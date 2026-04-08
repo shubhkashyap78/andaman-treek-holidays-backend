@@ -20,8 +20,17 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || "";
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://treek-holidays.vercel.app",
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "*",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    callback(null, true); // allow all for now
+  },
   credentials: true
 }));
 app.use(express.json({ limit: "1mb" }));
