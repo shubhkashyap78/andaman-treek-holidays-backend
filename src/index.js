@@ -16,6 +16,8 @@ import familyRouter from "./routes/family.js";
 import ltcRouter from "./routes/ltc.js";
 import groupRouter from "./routes/group.js";
 import ferryRouter from "./routes/ferry.js";
+import contactRouter from "./routes/contact.js";
+import contactRouter from "./routes/contact.js";
 
 const app = express();
 
@@ -51,6 +53,8 @@ app.use("/api/family", familyRouter);
 app.use("/api/ltc", ltcRouter);
 app.use("/api/group", groupRouter);
 app.use("/api/ferry", ferryRouter);
+app.use("/api/contact", contactRouter);
+app.use("/api/contact", contactRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
