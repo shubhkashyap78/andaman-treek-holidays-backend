@@ -341,7 +341,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["AC", "Meals"],
     priceFrom: 1500,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+    image: "/assests/greenocean1.png"
   },
   {
     name: "Green Ocean-2",
@@ -350,7 +350,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["AC", "WiFi"],
     priceFrom: 1800,
-    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+    image: "/assests/green-ocean-2-ferry.jpg"
   },
   {
     name: "Makruzz Gold",
@@ -359,7 +359,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["Seating", "Safe"],
     priceFrom: 1200,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+    image: "/assests/markruzz.webp"
   },
   {
     name: "MV Makruzz",
@@ -368,7 +368,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["Eco", "Groups"],
     priceFrom: 1300,
-    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+    image: "/assests/mv markruzz.jpg"
   },
   {
     name: "Nautika",
@@ -377,7 +377,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["Budget", "Private"],
     priceFrom: 1000,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5"
+    image: "/assests/nautika.webp"
   },
   {
     name: "ITT Majestic",
@@ -386,7 +386,7 @@ const ferries = [
     duration: "2 Hours",
     features: ["Rated", "Popular"],
     priceFrom: 1400,
-    image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8"
+    image: "/assests/itt majestic.jpg"
   }
 ];
 
