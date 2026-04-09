@@ -54,7 +54,7 @@ const activities = [
     title: "Scuba Diving in Havelock",
     category: "Scuba",
     priceFrom: 4500,
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    image: "/assests/scubadiving.jpg",
     description: "Beginner friendly shore dive with instructor.",
     duration: "2-3 Hours",
     location: "Havelock",
@@ -64,7 +64,7 @@ const activities = [
     title: "Sea Walk in North Bay",
     category: "Sea Walk",
     priceFrom: 3500,
-    image: "https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+    image: "/assests/snorkeling.jpg",
     description: "Walk under water with helmet at coral reef.",
     duration: "30-45 Min",
     location: "North Bay",
@@ -74,11 +74,41 @@ const activities = [
     title: "Bioluminescence Night Kayaking",
     category: "Kayaking",
     priceFrom: 2800,
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    image: "/assests/kayaking.jpg",
     description: "Paddle at night and see glowing water.",
     duration: "2 Hours",
     location: "Havelock",
     tags: ["kayak", "night"]
+  },
+  {
+    title: "Jet Ski Ride",
+    category: "Water Sports",
+    priceFrom: 2000,
+    image: "/assests/jetskiride.jpg",
+    description: "High-speed jet ski adventure in open waters.",
+    duration: "15-20 Min",
+    location: "Port Blair",
+    tags: ["jetski", "speed"]
+  },
+  {
+    title: "Parasailing Adventure",
+    category: "Adventure",
+    priceFrom: 3000,
+    image: "/assests/parasailing1.jpg",
+    description: "Soar high above the crystal-clear waters.",
+    duration: "10-15 Min",
+    location: "Port Blair",
+    tags: ["parasailing", "flying"]
+  },
+  {
+    title: "Banana Boat Ride",
+    category: "Fun Activity",
+    priceFrom: 800,
+    image: "/assests/bananaride.jpg",
+    description: "Fun group activity on inflatable banana boat.",
+    duration: "10-15 Min",
+    location: "North Bay",
+    tags: ["banana boat", "group"]
   }
 ];
 
@@ -86,7 +116,7 @@ const islands = [
   {
     name: "Port Blair",
     tagline: "Capital gateway to the islands",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    image: "/assests/cellualar jai.jpg",
     description: "Museums, Cellular Jail, and nearby beaches.",
     highlights: ["Cellular Jail", "Corbyns Cove", "Ross Island"],
     tags: ["gateway"]
@@ -94,18 +124,26 @@ const islands = [
   {
     name: "Havelock (Swaraj Dweep)",
     tagline: "Turquoise waters and white sands",
-    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    image: "/assests/Elephant-beach-2.jpg",
     description: "Famous for Radhanagar Beach and water sports.",
-    highlights: ["Radhanagar Beach", "Elephant Beach"],
-    tags: ["beach"]
+    highlights: ["Radhanagar Beach", "Elephant Beach", "Scuba Diving"],
+    tags: ["beach", "water sports"]
   },
   {
     name: "Neil (Shaheed Dweep)",
     tagline: "Peaceful, slow, and scenic",
-    image: "https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+    image: "/assests/kalapathar.jpg",
     description: "Natural Rock, Bharatpur Beach, and calm lagoons.",
-    highlights: ["Bharatpur", "Natural Rock"],
-    tags: ["calm"]
+    highlights: ["Bharatpur Beach", "Natural Rock", "Laxmanpur Beach"],
+    tags: ["calm", "peaceful"]
+  },
+  {
+    name: "Baratang Island",
+    tagline: "Limestone caves and mangrove creeks",
+    image: "/assests/chidiya tapu.jpg",
+    description: "Famous for limestone caves and mud volcanoes.",
+    highlights: ["Limestone Caves", "Mud Volcanoes", "Mangrove Creek"],
+    tags: ["caves", "adventure"]
   }
 ];
 
@@ -115,7 +153,7 @@ const honeymoons = [
     subtitle: "Perfect for newlyweds",
     duration: "4 Nights / 5 Days",
     priceFrom: 32999,
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    image: "/assests/Honeymoon1.jpeg",
     description: "Private cab, candle light dinner, and island hopping for two.",
     highlights: ["Candle Light Dinner", "Sunset Cruise", "Private Beach"],
     tags: ["honeymoon", "romantic"]
@@ -125,7 +163,7 @@ const honeymoons = [
     subtitle: "Havelock & Neil combo",
     duration: "5 Nights / 6 Days",
     priceFrom: 38999,
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    image: "/assests/honeymoon2.jpeg",
     description: "Explore Radhanagar Beach and Neil Island with your partner.",
     highlights: ["Radhanagar Beach", "Neil Island", "Snorkeling"],
     tags: ["honeymoon", "beach"]
@@ -135,7 +173,7 @@ const honeymoons = [
     subtitle: "Premium resort stay",
     duration: "6 Nights / 7 Days",
     priceFrom: 55999,
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    image: "/assests/honeymoon3.jpeg",
     description: "Luxury resort, spa, and private island tour.",
     highlights: ["Spa", "Private Island", "Luxury Resort"],
     tags: ["honeymoon", "luxury"]
@@ -145,7 +183,7 @@ const honeymoons = [
     subtitle: "For adventurous couples",
     duration: "5 Nights / 6 Days",
     priceFrom: 42999,
-    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    image: "/assests/honeymoon4.jpeg",
     description: "Scuba diving, kayaking, and trekking together.",
     highlights: ["Scuba Diving", "Kayaking", "Trekking"],
     tags: ["honeymoon", "adventure"]
@@ -155,10 +193,20 @@ const honeymoons = [
     subtitle: "Sweet & affordable",
     duration: "3 Nights / 4 Days",
     priceFrom: 22999,
-    image: "https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+    image: "/assests/honeymoon5.jpeg",
     description: "Port Blair and Havelock with all essentials covered.",
     highlights: ["Port Blair", "Havelock", "Beach Walk"],
     tags: ["honeymoon", "budget"]
+  },
+  {
+    title: "Premium Honeymoon 7N/8D",
+    subtitle: "Ultimate romantic experience",
+    duration: "7 Nights / 8 Days",
+    priceFrom: 65999,
+    image: "/assests/honeymoon6.jpeg",
+    description: "Luxury resorts, private beach dinners, helicopter rides, and spa treatments.",
+    highlights: ["Helicopter Ride", "Private Beach Dinner", "Spa Treatments"],
+    tags: ["honeymoon", "premium"]
   }
 ];
 
