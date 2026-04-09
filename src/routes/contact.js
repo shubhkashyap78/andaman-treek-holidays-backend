@@ -26,6 +26,7 @@ router.get("/", authMiddleware, async (req, res, next) => {
   }
 });
 
+// Public endpoint - no auth required for contact form submission
 router.post("/", async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
