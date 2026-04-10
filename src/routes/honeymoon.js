@@ -30,9 +30,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const item = await Honeymoon.findById(req.params.id);
+    const item = await Honeymoon.findOne({ _id: req.params.id });
     if (!item) return res.status(404).json({ error: "Not found" });
     res.json(item);
   } catch (err) {
@@ -43,7 +41,9 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    const created = await Honeymoon.create(req.body);
+    const count = await Honeymoon.countDocuments();
+    const _id = `h${count + 1}`;
+    const created = await Honeymoon.create({ _id, ...req.body });
     res.status(201).json(created);
   } catch (err) {
     next(err);
@@ -53,9 +53,7 @@ router.post("/", authMiddleware, async (req, res, next) => {
 router.put("/:id", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const updated = await Honeymoon.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updated = await Honeymoon.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
     if (!updated) return res.status(404).json({ error: "Not found" });
     res.json(updated);
   } catch (err) {
@@ -66,9 +64,7 @@ router.put("/:id", authMiddleware, async (req, res, next) => {
 router.delete("/:id", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const deleted = await Honeymoon.findByIdAndDelete(req.params.id);
+    const deleted = await Honeymoon.findOneAndDelete({ _id: req.params.id });
     if (!deleted) return res.status(404).json({ error: "Not found" });
     res.json({ ok: true });
   } catch (err) {

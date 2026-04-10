@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ltcSchema = new mongoose.Schema(
   {
+    _id: { type: String },
     title: { type: String, required: true },
     subtitle: { type: String, default: "" },
     duration: { type: String, default: "" },

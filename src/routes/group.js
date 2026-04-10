@@ -28,9 +28,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const item = await Group.findById(req.params.id);
+    const item = await Group.findOne({ _id: req.params.id });
     if (!item) return res.status(404).json({ error: "Not found" });
     res.json(item);
   } catch (err) { next(err); }
@@ -39,7 +37,9 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    const created = await Group.create(req.body);
+    const count = await Group.countDocuments();
+    const _id = `g${count + 1}`;
+    const created = await Group.create({ _id, ...req.body });
     res.status(201).json(created);
   } catch (err) { next(err); }
 });
@@ -47,9 +47,7 @@ router.post("/", authMiddleware, async (req, res, next) => {
 router.put("/:id", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const updated = await Group.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updated = await Group.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
     if (!updated) return res.status(404).json({ error: "Not found" });
     res.json(updated);
   } catch (err) { next(err); }
@@ -58,9 +56,7 @@ router.put("/:id", authMiddleware, async (req, res, next) => {
 router.delete("/:id", authMiddleware, async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
-    if (!mongoose.isValidObjectId(req.params.id))
-      return res.status(400).json({ error: "Invalid id" });
-    const deleted = await Group.findByIdAndDelete(req.params.id);
+    const deleted = await Group.findOneAndDelete({ _id: req.params.id });
     if (!deleted) return res.status(404).json({ error: "Not found" });
     res.json({ ok: true });
   } catch (err) { next(err); }
