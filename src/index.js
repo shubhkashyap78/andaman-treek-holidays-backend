@@ -5,6 +5,11 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import packagesRouter from "./routes/packages.js";
 import activitiesRouter from "./routes/activities.js";
@@ -38,6 +43,10 @@ app.use(cors({
 }));
 app.use(express.json({ limit: "1mb" }));
 app.use(morgan("dev"));
+
+// Serve static files from client/public directory
+app.use('/assests', express.static(path.join(__dirname, '../../client/public/assests')));
+app.use(express.static(path.join(__dirname, '../../client/public')));
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, service: "andaman-server" });
