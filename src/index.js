@@ -31,7 +31,8 @@ const MONGODB_URI = process.env.MONGODB_URI || "";
 const allowedOrigins = [
   "http://localhost:5173",
   "https://treek-holidays.vercel.app",
-  process.env.CLIENT_URL
+  "https://myandamantour.com",
+  ...(process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',').map(url => url.trim()) : [])
 ].filter(Boolean);
 
 app.use(cors({
