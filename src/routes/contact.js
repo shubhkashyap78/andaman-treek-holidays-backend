@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Contact from "../models/Contact.js";
 import authMiddleware from "../middleware/authMiddleware.js";
+import { sendEnquiryNotification, sendThankYouEmail } from "../emailService.js";
 
 const router = express.Router();
 
@@ -30,9 +31,26 @@ router.get("/", authMiddleware, async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     if (!ensureDb(req, res)) return;
+    
+    // Save to database
     const created = await Contact.create(req.body);
+    console.log('✅ Contact saved to database:', created._id);
+    
+    // Send email notifications (don't let email errors break the flow)
+    try {
+      // Send notification to admin
+      await sendEnquiryNotification(req.body);
+      
+      // Send thank you email to customer
+      await sendThankYouEmail(req.body);
+    } catch (emailError) {
+      console.error('⚠️ Email sending failed, but contact saved:', emailError.message);
+      // Continue execution - database save was successful
+    }
+    
     res.status(201).json(created);
   } catch (err) {
+    console.error('❌ Contact creation failed:', err);
     next(err);
   }
 });
