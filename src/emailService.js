@@ -12,12 +12,6 @@ const transporter = nodemailer.createTransport({
 // Send enquiry notification email
 export async function sendEnquiryNotification(enquiryData) {
   try {
-    console.log('📧 Attempting to send admin notification email...');
-    console.log('Email config:', {
-      user: process.env.EMAIL_USER,
-      passLength: process.env.EMAIL_PASS ? process.env.EMAIL_PASS.length : 0
-    });
-    
     const mailOptions = {
       from: process.env.EMAIL_USER || 'myandamantour@gmail.com',
       to: 'myandamantour@gmail.com', // Your business email
@@ -92,11 +86,11 @@ export async function sendEnquiryNotification(enquiryData) {
       `
     };
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Admin notification email sent successfully:', result.messageId);
+    await transporter.sendMail(mailOptions);
+    console.log('✅ Enquiry notification email sent successfully');
     return true;
   } catch (error) {
-    console.error('❌ Admin email sending failed:', error);
+    console.error('❌ Email sending failed:', error);
     return false;
   }
 }
